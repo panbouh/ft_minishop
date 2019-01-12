@@ -1,0 +1,61 @@
+body {
+}
+
+header {
+    position: relative;
+    margin: 0 auto;
+    background-color: rgb(119, 119, 119);
+    width: 90%;
+    height: 20%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#sel-box select{
+    width: 50%;
+}
+
+#sign-box {
+    display: flex;
+    justify-content: center;
+}
+
+.item-box {
+    position: relative;
+    margin: 10px auto;
+    padding: 10px;
+    display: flex;
+    width: 85%;
+    height: 200px;
+    justify-content: flex-start;
+    background-color: rgb(178, 178, 178);
+
+}
+
+.item-box img {
+    margin-right: 10px;
+    width: 10%;
+    height: auto;
+}
+
+.item-box article {
+    flex-grow: 2;
+}
+
+#cart-box {
+    position: fixed;
+    background-image: url(../img/cart.png);
+    background-repeat: no-repeat;
+    background-size: 290px 210px;
+    background-position: center;
+    padding: 5px;
+    margin: 5px;
+    border: 3px solid black;
+    width: 300px;
+    height: 300px;
+    bottom: 0px;
+    right: 0px;
+    text-align: center;
+}
