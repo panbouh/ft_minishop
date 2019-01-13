@@ -19,6 +19,11 @@
 	echo $user;
 	print_r($user);
 	$_SESSION["user_lvl"] = $user['lvl'];
+	$cart = get_file("db/carts");
+	if (($cart) && (isset($cart[$_POST["login"]])))
+	{
+		$_SESSION["cart"] = $cart[$_POST["login"]];
+	}
 	echo "<p>".$_POST["login"]." loggued on successfully</p>";
 ?>
 

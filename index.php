@@ -1,9 +1,13 @@
 <?php
     session_start();
     include("src/showcase.php");
+	include("src/cart.php");
+	$quantity = 1;
 	if ($_GET["add-to-cart"])
 	{
-		$_SESSION[$_GET["add-to-cart"]] = 1;
+		if ($_SESSION["loggued_on_user"])
+			add_to_cart($_GET["add-to-cart"], $_SESSION["loggued_on_user"], $quantity) ;
+		$_SESSION["cart"][] = array($_GET["add-to-cart"], $quantity);
 	}
 ?>
 
