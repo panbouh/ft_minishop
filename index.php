@@ -11,7 +11,7 @@
     </head>
     <body>
         
-        <!-- <header>
+        <header>
             <div id="sel-box">
                 <label for="sel-item">Category</label>
                     <select name="" id="sel-item">
@@ -40,6 +40,6 @@
 
         <section id="cart-box">
             <p>You have an empty cart.</p>
-        </section> -->
+        </section>
     </body>
 </html>
