@@ -46,16 +46,20 @@ header {
 
 #cart-box {
     position: fixed;
-    background-image: url(../img/cart.png);
+     background-image: url(../img/cart.png);
     background-repeat: no-repeat;
-    background-size: 290px 210px;
+    background-size: 150px 150px;
     background-position: center;
     padding: 5px;
     margin: 5px;
     border: 3px solid black;
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
     bottom: 0px;
     right: 0px;
     text-align: center;
 }
+
+/* #cart-box:hover {
+    left: 0px;
+} */

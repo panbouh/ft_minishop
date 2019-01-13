@@ -15,9 +15,6 @@
 	}
 	$_SESSION["loggued_on_user"] = $_POST["login"];
 	$user = get_user($_POST["login"]);
-	echo "user";
-	echo $user;
-	print_r($user);
 	$_SESSION["user_lvl"] = $user['lvl'];
 	$cart = get_file("db/carts");
 	if (($cart) && (isset($cart[$_POST["login"]])))

@@ -31,11 +31,14 @@
             </div>
 			<h1>ft_minishop</h1>
 			<?php if ($_SESSION["loggued_on_user"]): 
-			echo "Loggued as ".$_SESSION["loggued_on_user"]."with admin lvl :".$_SESSION['user_lvl'];
+			echo "Loggued as [ ".$_SESSION["loggued_on_user"]." ]";			
             ?>
-                <?php if ($_SESSION['user_lvl'] === "1") :?>
+                <?php if ($_SESSION['user_lvl'] == "1") :?>
                     <form action="admin.php">
                         <button type="submit" name="submit" value="admin">Admin Panel</button>
+                    </form>
+                    <form action="new_article.php">
+                        <button type="submit" id="new">Add article</button>
                     </form>
                 <?php endif;?>
 				<form action="logout.php">

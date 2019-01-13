@@ -39,5 +39,6 @@
             <button type="reset">reset</button>
             <p>* marked field are required</p>
         </form>
+        <a href="index.php">Home Page</a>
     </body>
 </html>
