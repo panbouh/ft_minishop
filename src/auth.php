@@ -1,4 +1,5 @@
 <?PHP
+    session_start();
 	function auth($login, $passwd)
 	{
 		if (!file_exists("../db/users"))

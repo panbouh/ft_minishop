@@ -1,4 +1,5 @@
 <?php
+    session_start();
     function create_article($article)  
     {
         $file_p = "db/showcase";

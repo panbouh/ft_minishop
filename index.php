@@ -25,15 +25,15 @@
                         <option value="cat4">cat4</option>
                     </select>
             </div>
-			<h1>ft_minishop</h1>
-			<? if ($_SESSION["loggued_on_user"]): 
-			echo "Loggued as ".$_SESSION["loggued_on_user"];
-?>
+            <h1>ft_minishop</h1>
+            
+			<?php if ($_SESSION["loggued_on_user"]): 
+            echo "Loggued as ".$_SESSION["loggued_on_user"]; ?>
 				<form action="src/logout.php">
 					<button type="submit" action="src/logout.php" name="logout">LOGOUT</button>
-				</form>
-			<?
-			else:?>
+                </form>
+            
+			<?php else: ?>
             <div id="sign-box">
                 <form action="src/sign_in.php" method="POST">
                     <label for="login">login</label>
@@ -46,7 +46,7 @@
                     <button type="submit" name="sign-up">sign up</button>
                 </form>
 			</div>
-			<? endif; ?>
+			<?php endif; ?>
         </header>
 
         <?php print_showcase(); ?>

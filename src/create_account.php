@@ -1,5 +1,5 @@
 <?PHP
-session_start();
+	session_start();
 
 function is_existant(&$db, $login)
 {
