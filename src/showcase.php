@@ -4,17 +4,20 @@
         $file_p = "../article/showcase";
         if (!($file_in = get_file($file_p)))
             $file_in = NULL;                    //for count is 0 with empty, else is 1
-        set_id($file_in);
         $file_in[] = $article;
+        $file_in = set_id($file_in);
         file_put_contents($file_p, serialize($file_in));
     }
-    
+
     function set_id($file_in)
     {
+        $id = 1;
         foreach ($file_in as &$article)
         {
-            
+            $article['id'] = $id;
+            $id++;
         }
+        return ($file_in);
     }
 
     function get_file($file_p)
@@ -38,7 +41,7 @@
                         <p>".$article['description']."</p>
                     </article>
                     <button type='submit' name='add-to-cart'>add</button>
-                    <form action='mod_article.php' method='get'> 
+                    <form action='mod_article.php' method='get'>
                         <button type='submit' name='id' value='".$article['id']."'>modify</button>
                     </form>
                 </section>
