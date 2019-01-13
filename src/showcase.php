@@ -1,7 +1,7 @@
 <?php
     function create_article($article)  
     {
-        $file_p = "../article/showcase";
+        $file_p = "article/showcase";
         if (!($file_in = get_file($file_p)))
             $file_in = NULL;                    //for count is 0 with empty, else is 1
         $file_in[] = $article;
@@ -47,11 +47,5 @@
                 </section>
             ";
         }
-    }
-
-    if ($_POST['submit'] === 'OK')
-    {
-        $art = array("name" => $_POST['name'], "img" => $_POST['img'], "description" => $_POST['description'], "price" => $_POST['price']);
-        create_article($art);
     }
 ?>

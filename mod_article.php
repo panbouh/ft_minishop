@@ -9,16 +9,13 @@
     if ($id = $_GET['id'])
         $article = $file_in[$id - 1];
 
-    if ($_POST['submit'] === "OK")
+    if ($id = $_POST['id'])
     {
-        echo "STOP ID : ".$_POST['id']."\n";
-        print_r($file_in);
-        echo "<p>Article modified\n</p>";
+        $article = &$file_in[$id - 1];
         $article['name'] = $_POST['name'];
         $article['price'] = $_POST['price'];
         $article['description'] = $_POST['description'];
         $article['img'] = $_POST['img'];
-        print_r($file_in);
         file_put_contents($file_p, serialize($file_in));
     }
 ?>
@@ -47,8 +44,7 @@
             <label for="img">Image url :</label>
             <input type="url" name="img" id="img" value=<?php echo($article['img']);?>>
             <br>
-            <p name="id" value=<?php echo($article['id']); ?>> <?php echo($article['id']); ?> </p>
-            <button type="submit" name="submit" value ="OK">ok</button>    
+            <button type="submit" name="id" value=<?php echo($article['id']);?>>ok</button>    
             <button type="reset">reset</button>
 
         </form>

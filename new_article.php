@@ -1,6 +1,13 @@
 <?php
     session_start();
     include("src/showcase.php");
+
+    if ($_POST['submit'] === 'OK')
+    {
+        echo "COUCOU\n";
+        $art = array("name" => $_POST['name'], "img" => $_POST['img'], "description" => $_POST['description'], "price" => $_POST['price']);
+        create_article($art);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +17,7 @@
         <title>Add new article</title>
     </head>
     <body>
-        <form action="src/showcase.php" method="POST">
+        <form action="new_article.php" method="POST">
             
             <label for="name">Name :</label>
             <input type="text" name="name" id="name" required>*
