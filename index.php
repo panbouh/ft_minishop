@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include("src/showcase.php");
 ?>
 
@@ -10,7 +11,7 @@
         <title>ft_minishop</title>
     </head>
     <body>
-        <header>
+        <!-- <header>
             <div id="sel-box">
                 <label for="sel-item">Category</label>
                     <select name="" id="sel-item">
@@ -31,12 +32,12 @@
                     <button type="submit" name="sign-up">sign up</button>
                 </form>
             </div>
-        </header>
+        </header> -->
 
         <?php print_showcase(); ?>
 
         <section id="cart-box">
-            <p>You have an empty cart.</p>
+           <?php print_cart(); ?>
         </section>
     </body>
 </html>
