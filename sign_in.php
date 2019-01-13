@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	include("src/auth.php");
+	include("src/get_file.php");
 	if ($_SESSION["loggued_on_user"])
 	{
 		echo "<p>you are loggued as: ".$_SESSION["loggued_on_user"]."</p>";
@@ -13,6 +14,11 @@
 		return;
 	}
 	$_SESSION["loggued_on_user"] = $_POST["login"];
+	$user = get_user($_POST["login"]);
+	echo "user";
+	echo $user;
+	print_r($user);
+	$_SESSION["user_lvl"] = $user['lvl'];
 	echo "<p>".$_POST["login"]." loggued on successfully</p>";
 ?>
 

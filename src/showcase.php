@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include("get_file.php");
     function create_article($article)  
     {
         $file_p = "db/showcase";
@@ -19,13 +20,6 @@
             $id++;
         }
         return ($file_in);
-    }
-
-    function get_file($file_p)
-    {
-        if (file_exists($file_p))
-            return (unserialize(file_get_contents($file_p)));
-        return (FALSE);
     }
 
     function print_showcase()

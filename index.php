@@ -4,7 +4,7 @@
 	if ($_GET["add-to-cart"])
 	{
 		$_SESSION[$_GET["add-to-cart"]] = 1;
-    }
+	}
 ?>
 
 <!DOCTYPE html>
@@ -25,15 +25,20 @@
                         <option value="cat4">cat4</option>
                     </select>
             </div>
-            <h1>ft_minishop</h1>
-            
+			<h1>ft_minishop</h1>
 			<?php if ($_SESSION["loggued_on_user"]): 
-                echo "Loggued as ".$_SESSION["loggued_on_user"]; ?>
+			echo "Loggued as ".$_SESSION["loggued_on_user"]."with admin lvl :".$_SESSION['user_lvl'];
+            ?>
+                <?php if ($_SESSION['user_lvl'] === "1") :?>
+                    <form action="admin.php">
+                        <button type="submit" name="submit" value="admin">Admin Panel</button>
+                    </form>
+                <?php endif;?>
 				<form action="logout.php">
-					<button type="submit" name="submit" value="logout">LOGOUT</button>
-                </form>
-            
-			<?php else: ?>
+					<button type="submit" action="logout.php" name="logout">LOGOUT</button>
+				</form>
+			<?php
+			else:?>
             <div id="sign-box">
                 <form action="sign_in.php" method="POST">
                     <label for="login">login</label>

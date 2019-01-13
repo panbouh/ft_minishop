@@ -1,5 +1,6 @@
 <?PHP
 	session_start();
+    include("src/get_file.php");
 
 function is_existant(&$db, $login)
 {
@@ -11,10 +12,10 @@ function is_existant(&$db, $login)
 	return FALSE;
 }
 
-function insert_user(&$db)
+function insert_user($db, $lvl)
 {
 	$hashed_passwd = hash("whirlpool", $_POST["passwd"]);
-	$credentials = array("login" => $_POST["login"], "email" => $_POST["email"], "passwd" => $hashed_passwd);
+	$credentials = array("login" => $_POST["login"], "email" => $_POST["email"], "passwd" => $hashed_passwd, "lvl" => $lvl);
 	$db[] = $credentials;
 	file_put_contents("db/users", serialize($db));
 }
@@ -25,13 +26,10 @@ if ($_SESSION["loggued_on_user"])
 	return;
 }
 
-if (($_POST["login"]) && ($_POST["email"]) && ($_POST["passwd"]) && ($_POST["confirm_passwd"]) && ($_POST["submit"] == "create"))
+if (($_POST["login"]) && ($_POST["email"]) && ($_POST["passwd"]) && ($_POST["confirm_passwd"]) && ($_POST["submit"] === "create"))
 {
 	if (file_exists("db/users"))
-	{
-		$file = file_get_contents("db/users");
-		$data = unserialize($file);
-	}
+		$data = get_file("db/users");
 	else
 		$data = array();
 	if (is_existant($data, $_POST["login"]))
@@ -40,11 +38,11 @@ if (($_POST["login"]) && ($_POST["email"]) && ($_POST["passwd"]) && ($_POST["con
 		$retry_msg = "password and confirm password not the same";
 	else
 	{
-		insert_user($data);	
+		insert_user($data, 0);	
 		echo "<p>".$_POST["login"]." created succesfully </p>";
 		echo "<a href='index.php'> Return to Home page.</a>";
 		return;	
-}	
+	}	
 }
 else
 	$retry_msg = "il manque un truc";
@@ -54,14 +52,14 @@ if ($retry_msg)
 ?>
 
 <html>
-<head>
-</head>
-<body>
-<form method="POST" action="create_account.php" name="signup">
-	Login: <input type="text" name="login" > <br/>
-	Email: <input type="email" name="email"> <br/>
-	Mot de passe <input type="password" name="passwd"> <br/>
-	Confirmez mot de passe <input type="password" name="confirm_passwd"> <br/>
-	<input type="submit" name="submit" value="create"> <br/>
-</body>
+	<head>
+	</head>
+	<body>
+	<form method="POST" action="create_account.php" name="signup">
+		Login: <input type="text" name="login" > <br/>
+		Email: <input type="email" name="email"> <br/>
+		Mot de passe <input type="password" name="passwd"> <br/>
+		Confirmez mot de passe <input type="password" name="confirm_passwd"> <br/>
+		<input type="submit" name="submit" value="create"> <br/>
+	</body>
 </html>
