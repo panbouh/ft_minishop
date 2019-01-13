@@ -10,8 +10,10 @@
         <title>ft_minishop</title>
     </head>
     <body>
-        
-        <header>
+        <form action="src/showcase.php" method="POST">
+            <button type="submit" name="submit" value ="OK">ok</button>    
+        </form>
+        <!-- <header>
             <div id="sel-box">
                 <label for="sel-item">Category</label>
                     <select name="" id="sel-item">
@@ -32,14 +34,12 @@
                     <button type="submit" name="sign-up">sign up</button>
                 </form>
             </div>
-        </header>
+        </header> -->
 
-        <section class="item-box">
-            <?php get_showcase(); ?>
-        </section>
+        <?php print_showcase(); ?>
 
-        <section id="cart-box">
+        <!-- <section id="cart-box">
             <p>You have an empty cart.</p>
-        </section>
+        </section> -->
     </body>
 </html>
