@@ -1,7 +1,7 @@
 <?php
     function create_article($article)  
     {
-        $file_p = "article/showcase";
+        $file_p = "db/showcase";
         if (!($file_in = get_file($file_p)))
             $file_in = NULL;                    //for count is 0 with empty, else is 1
         $file_in[] = $article;
@@ -29,7 +29,7 @@
 
     function print_showcase()
     {
-        $file_p = "article/showcase";
+        $file_p = "db/showcase";
         $showcase = get_file($file_p);
         foreach ($showcase as $article)
         {

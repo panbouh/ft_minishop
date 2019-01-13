@@ -2,7 +2,7 @@
     session_start();
     include("src/showcase.php");
     
-    $file_p = "article/showcase";
+    $file_p = "db/showcase";
     $file_in = get_file($file_p);
     print_r($file_in);
 

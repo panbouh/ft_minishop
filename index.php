@@ -1,6 +1,10 @@
 <?php
     session_start();
     include("src/showcase.php");
+	if ($_GET["add-to-cart"])
+	{
+		$_SESSION[$_GET["add-to-cart"]] = 1;
+	}
 ?>
 
 <!DOCTYPE html>
