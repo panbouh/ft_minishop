@@ -13,10 +13,10 @@ function is_existant(&$db, $login)
 
 function insert_user(&$db)
 {
-	$hashed_passwd = hash("sha256", $_POST["passwd"]);
+	$hashed_passwd = hash("whirlpool", $_POST["passwd"]);
 	$credentials = array("login" => $_POST["login"], "email" => $_POST["email"], "passwd" => $hashed_passwd);
 	$db[] = $credentials;
-	file_put_contents("../db/users", serialize($db));
+	file_put_contents("db/users", serialize($db));
 }
 
 if ($_SESSION["loggued_on_user"])
@@ -27,9 +27,9 @@ if ($_SESSION["loggued_on_user"])
 
 if (($_POST["login"]) && ($_POST["email"]) && ($_POST["passwd"]) && ($_POST["confirm_passwd"]) && ($_POST["submit"] == "create"))
 {
-	if (file_exists("../db/users"))
+	if (file_exists("db/users"))
 	{
-		$file = file_get_contents("../db/users");
+		$file = file_get_contents("db/users");
 		$data = unserialize($file);
 	}
 	else
@@ -41,7 +41,8 @@ if (($_POST["login"]) && ($_POST["email"]) && ($_POST["passwd"]) && ($_POST["con
 	else
 	{
 		insert_user($data);	
-		echo $_POST["login"]." created succesfully";
+		echo "<p>".$_POST["login"]." created succesfully </p>";
+		echo "<a href='index.php'> Return to Home page.</a>";
 		return;	
 }	
 }
@@ -58,9 +59,9 @@ if ($retry_msg)
 <body>
 <form method="POST" action="create_account.php" name="signup">
 	Login: <input type="text" name="login" > <br/>
-	Email: <input type="text" name="email"> <br/>
-	Mot de passe <input type="text" name="passwd"> <br/>
-	Confirmez mot de passe <input type="text" name="confirm_passwd"> <br/>
+	Email: <input type="email" name="email"> <br/>
+	Mot de passe <input type="password" name="passwd"> <br/>
+	Confirmez mot de passe <input type="password" name="confirm_passwd"> <br/>
 	<input type="submit" name="submit" value="create"> <br/>
 </body>
 </html>
