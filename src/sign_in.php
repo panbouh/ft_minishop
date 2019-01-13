@@ -1,5 +1,6 @@
 <?PHP
-	session_start();
+session_start();
+include("showcase.php");
 	include("auth.php");
 	if ($_SESSION["loggued_on_user"])
 	{
@@ -12,5 +13,10 @@
 		return;
 	}
 	$_SESSION["loggued_on_user"] = $_POST["login"];
+	$cart = get_file("../db/carts");
+	if (($cart) && (isset($cart[$_POST["login"]])))
+	{
+		$_SESSION["cart"] = $cart[$_POST["login"]];
+	}
 	echo $_POST["login"]." loggued on successfully";
 ?>

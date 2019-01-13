@@ -1,6 +1,6 @@
 <?php
     session_start();
-    function create_article($article)  
+	function create_article($article)  
     {
         $file_p = "db/showcase";
         if (!($file_in = get_file($file_p)))
@@ -41,7 +41,8 @@
                         <h2>".$article['name']."</h2><h3>".$article['price']." $</h3>
                         <p>".$article['description']."</p>
                     </article>
-                    <button type='submit' name='add-to-cart'>add</button>
+					<form action='index.php' method='get'> 
+					<button type='submit' name='add-to-cart' value='".$article['id']."'>add</button>
                     <form action='mod_article.php' method='get'>
                         <button type='submit' name='id' value='".$article['id']."'>modify</button>
                     </form>
