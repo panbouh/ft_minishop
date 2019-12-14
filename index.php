@@ -31,9 +31,9 @@
             </div>
 			<h1>ft_minishop</h1>
 			<?php if ($_SESSION["loggued_on_user"]): 
-			echo "Loggued as [ ".$_SESSION["loggued_on_user"]." ]";			
+			echo "Loggued as [ ".$_SESSION["loggued_on_user"]." ], lvl = ". $_SESSION['user_lvl'];
             ?>
-                <?php if ($_SESSION['user_lvl'] == "1") :?>
+                <?php if ($_SESSION['user_lvl'] === "1") :?>
                     <form action="admin.php">
                         <button type="submit" name="submit" value="admin">Admin Panel</button>
                     </form>

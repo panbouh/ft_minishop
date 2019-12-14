@@ -25,7 +25,7 @@ if ($_SESSION["loggued_on_user"])
 	echo "you are loggued as: ".$_SESSION["loggued_on_user"]."\n";
 	return;
 }
-
+// A REVOIR (transformation en function)----------------------
 if (($_POST["login"]) && ($_POST["email"]) && ($_POST["passwd"]) && ($_POST["confirm_passwd"]) && ($_POST["submit"] === "create"))
 {
 	if (file_exists("db/users"))
@@ -44,11 +44,7 @@ if (($_POST["login"]) && ($_POST["email"]) && ($_POST["passwd"]) && ($_POST["con
 		return;	
 	}	
 }
-else
-	$retry_msg = "il manque un truc";
-
-if ($retry_msg)
-	echo $retry_msg;
+//------------------------------------------------------------
 ?>
 
 <html>

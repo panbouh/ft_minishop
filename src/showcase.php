@@ -24,7 +24,8 @@ function create_article($article)
     function print_showcase()
     {
         $file_p = "db/showcase";
-        $showcase = get_file($file_p);
+        if (!$showcase = get_file($file_p))
+            return (FALSE);
         foreach ($showcase as $article)
         {
         echo "

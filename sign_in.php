@@ -5,6 +5,7 @@
 	if ($_SESSION["loggued_on_user"])
 	{
 		echo "<p>you are loggued as: ".$_SESSION["loggued_on_user"]."</p>";
+		echo "<a href='index.php'>Return to Home page.</a>";
 		return;
 	}
 	if (!auth($_POST["login"], $_POST["pwd"]))
@@ -15,6 +16,7 @@
 	}
 	$_SESSION["loggued_on_user"] = $_POST["login"];
 	$user = get_user($_POST["login"]);
+	print_r();
 	$_SESSION["user_lvl"] = $user['lvl'];
 	$cart = get_file("db/carts");
 	if (($cart) && (isset($cart[$_POST["login"]])))
@@ -30,6 +32,6 @@
 		<title>Sign in</title>
 	</head>
 	<body>
-		<a href="index.php">Return to 	Home page.</a>
+		<a href="index.php">Return to Home page.</a>
 	</body>
 </html>
